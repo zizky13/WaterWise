@@ -3,7 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import CheckIcon from '@mui/icons-material/Check';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const Task = ({ task, onEdit, onComplete }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -21,7 +22,7 @@ const Task = ({ task, onEdit, onComplete }) => {
 //   };
 
   return (
-    <div className="flex items-center justify-between p-2 border-b">
+    <div className="flex items-center justify-between p-2 border-b border-subprimary">
       <div className="flex items-center">
         <input
           type="checkbox"
@@ -35,13 +36,13 @@ const Task = ({ task, onEdit, onComplete }) => {
               type="text"
               value={editedText}
               onChange={(e) => setEditedText(e.target.value)}
-              className="mr-2 p-1 border"
+              className="mr-2 p-1 border border-primary"
             />
             <input
               type="text"
               value={editedTime}
               onChange={(e) => setEditedTime(e.target.value)}
-              className="p-1 border"
+              className="p-1 border  border-primary"
             />
           </>
         ) : (
@@ -51,7 +52,7 @@ const Task = ({ task, onEdit, onComplete }) => {
         )}
       </div>
       <button onClick={handleEdit} className="p-1 border bg-blue-500 text-white">
-        {isEditing ? <AddCircleOutlineIcon className='inputIcons'/> : <DriveFileRenameOutlineIcon className='inputIcons text-screenColor'/>}
+        {isEditing ? <CheckIcon className='text-screenColor'/> : <DriveFileRenameOutlineIcon className=' text-screenColor'/>}
       </button>
     </div>
   );
@@ -95,17 +96,17 @@ const Dashboard = () => {
     <div className="p-4">
         <div className="mb-4">
             <div className='flex flex-row'>
-                <h2 className="text-xl mb-2">Today's Tasks</h2>
-                <AddCircleOutlineIcon className='inputIcons' onClick={handleShow}/>
+                <h2 className="text-xl mb-2 font-bungeei text-primary">Today's Tasks</h2>
+                <AddCircleIcon className='text-primary ml-5' onClick={handleShow}/>
             </div>
             {tasks.filter(task => !task.completed).map(task => (
                 <Task key={task.id} task={task} onEdit={handleEdit} onComplete={handleComplete} />
             ))}
         </div>
         <div>
-            <h2 className="text-xl mb-2">Completed Tasks Today</h2>
+            <h2 className="font-bungeei text-primary text-xl mb-2">Completed Tasks Today</h2>
             {tasks.filter(task => task.completed).length === 0 ? (
-            <p>You haven't completed any tasks yet. Start by selecting a task from your list and make progress towards achieving your goals!</p>
+            <p className='font-sansar text-subprimary text-center'>You haven't completed any tasks yet. Start by selecting a task from your list and make progress towards achieving your goals!</p>
             ) : (
             tasks.filter(task => task.completed).map(task => (
                 <Task key={task.id} task={task} onEdit={handleEdit} onComplete={handleComplete} />
@@ -113,11 +114,11 @@ const Dashboard = () => {
             )}
         </div>
         <div>
-            w
+            
         </div>
         <Modal show={show} onHide={handleClose} centered>
             <Modal.Header>
-                <Modal.Title>Add new task</Modal.Title>
+                <Modal.Title className='font-bungeei text-primary'>Add new task</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>
@@ -141,7 +142,7 @@ const Dashboard = () => {
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant='danger' onClick={handleClose}>
                     Close
                 </Button>
                 <Button variant="primary" onClick={handleAddTask}>
