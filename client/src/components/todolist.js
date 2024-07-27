@@ -20,7 +20,7 @@ const Task = ({ task, onEdit, onComplete, onDelete }) => {
   };
 
   return (
-    <div className="flex items-center justify-between p-2 border-b">
+    <div className="flex items-center justify-between p-2 border-b border-subprimary">
       <div className="flex items-center">
         <input
           type="checkbox"
@@ -34,13 +34,13 @@ const Task = ({ task, onEdit, onComplete, onDelete }) => {
               type="text"
               value={editedText}
               onChange={(e) => setEditedText(e.target.value)}
-              className="mr-2 p-1 border"
+              className="mr-2 p-1 border border-primary"
             />
             <input
               type="text"
               value={editedTime}
               onChange={(e) => setEditedTime(e.target.value)}
-              className="p-1 border"
+              className="p-1 border  border-primary"
             />
           </>
         ) : (

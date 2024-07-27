@@ -18,7 +18,7 @@ module.exports = {
         'subprimary': '#5091bb', 
         'headText' : '#202020',
         'inactiveBtn' : '#9c9c9c',
-        'inactiveText':'606060',
+        'inactiveText':'#606060',
         'alert':'#bf2d2d',
       }
     },
