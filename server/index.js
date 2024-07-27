@@ -3,6 +3,8 @@ import { dbUri, PORT } from "./config.js";
 import mongoose, { mongo } from "mongoose";
 import TodoRoutes from "./routes/todoRoutes.js";
 import UserRoutes from "./routes/userroutes.js";
+import cors from "cors";
+
 const app = express();
 app.use(express.json());
 
@@ -10,7 +12,7 @@ app.get("/", (req, res) => {
   res.status(200).send("Welcome to WaterWise");
 });
 
-app.use("/api/user", UserRoutes);
+app.use(cors());
 app.use("/api/todo", TodoRoutes);
 
 mongoose

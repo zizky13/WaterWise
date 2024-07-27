@@ -17,7 +17,8 @@ export default function SignIn() {
     };
     const handleClick = () => {
         setPasswordShown(!passwordShown);
-    };    
+    };
+    
     return (
         <div className='container h-screen mx-auto overflow-hidden'>
             <div className='flex flex-row h-screen items-center justify-center p-7 gap-10'>
