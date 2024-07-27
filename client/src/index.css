@@ -43,6 +43,22 @@ code {
   @apply font-bungeer text-primary
 }
 
+/* Insights styling */
+.insightBoxes {
+  @apply p-3 flex border-solid border-2 border-blue-500 rounded;
+}
+.imgBlogs {
+  @apply w-2/5 
+}
+
+.titleBlogs {
+  @apply text-xl font-sansab text-primary ml-4 mb-2;
+}
+
+.contentBlogs {
+  @apply font-sansal text-base ml-4 text-subprimary mb-4;
+}
+
 
 /* Auth */
 
