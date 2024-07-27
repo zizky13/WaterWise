@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import axios from 'axios';
 
 const Task = ({ task, onEdit, onComplete }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -79,13 +80,34 @@ const Dashboard = () => {
   const handleShow = () => setShow(true);
 
   const [newTaskText, setNewTaskText] = useState('');
-  const [newTaskTime, setNewTaskTime] = useState('');
+  const [newTaskTime, setNewTaskTime] = useState(0);
 
-  const handleAddTask = () => {
+  const handleAddTask = async () => {
     if (!newTaskText || !newTaskTime) {
       return; // Prevent adding empty tasks
     }
     setTasks([...tasks, { id: tasks.length + 1, text: newTaskText, time: newTaskTime, completed: false }]);
+    try {
+      const predictionResult = await axios.post(
+        "http://127.0.0.1:5000/predict",
+        {
+          duration: newTaskTime,
+          task_type: newTaskText,
+        }
+      );
+
+      const { water_usage } = predictionResult.data;
+
+      const todoResponse = await axios.post('http://localhost:8080/api/todo/', {
+        task: newTaskText,
+        duration: newTaskTime,
+        waterUsage: water_usage,
+      })
+
+      alert("Record added!")
+    } catch (e) { 
+      console.log(e)
+    }
     setNewTaskText('');
     setNewTaskTime('');
     handleClose();
@@ -111,9 +133,6 @@ const Dashboard = () => {
                 <Task key={task.id} task={task} onEdit={handleEdit} onComplete={handleComplete} />
             ))
             )}
-        </div>
-        <div>
-            w
         </div>
         <Modal show={show} onHide={handleClose} centered>
             <Modal.Header>
