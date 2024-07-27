@@ -6,6 +6,7 @@ import Guide from './pages/guide';
 import About from './pages/about';
 import Home from './pages/home';
 import Dashboard from './pages/dashboard';
+import DummySubmit from './pages/dummySubmit';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path='/about' element={<About />}/>
           <Route path='/guide' element={<Guide />}/>
           <Route path='/dashboard' element={<Dashboard />}/>
+          <Route path='/dummySubmit' element={<DummySubmit />}/>
         </Routes>
       </main>
     </BrowserRouter>
