@@ -3,17 +3,18 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import DeleteIcon from "@mui/icons-material/Delete";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import axios from "axios";
 
-const Task = ({ task, onEdit, onComplete }) => {
+const Task = ({ task, onEdit, onComplete, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedText, setEditedText] = useState(task.text);
-  const [editedTime, setEditedTime] = useState(task.time);
+  const [editedText, setEditedText] = useState(task.task);
+  const [editedTime, setEditedTime] = useState(task.duration);
 
   const handleEdit = () => {
     if (isEditing) {
-      onEdit(task.id, editedText, editedTime);
+      onEdit(task._id, editedText, editedTime);
     }
     setIsEditing(!isEditing);
   };
@@ -48,16 +49,24 @@ const Task = ({ task, onEdit, onComplete }) => {
           </span>
         )}
       </div>
-      <button
-        onClick={handleEdit}
-        className="p-1 border bg-blue-500 text-white"
-      >
-        {isEditing ? (
-          <AddCircleOutlineIcon className="inputIcons" />
-        ) : (
-          <DriveFileRenameOutlineIcon className="inputIcons text-screenColor" />
-        )}
-      </button>
+      <div className="flex justify-evenly">
+        <button
+          onClick={handleEdit}
+          className="p-1 border bg-blue-500 text-white"
+        >
+          {isEditing ? (
+            <AddCircleOutlineIcon className="inputIcons" />
+          ) : (
+            <DriveFileRenameOutlineIcon className="inputIcons text-white" />
+          )}
+        </button>
+        <button
+          onClick={() => onDelete(task._id)}
+          className="p-1 border bg-red-600 text-white"
+        >
+          <DeleteIcon className="inputIcons text-white ml-2" />
+        </button>
+      </div>
     </div>
   );
 };
@@ -100,6 +109,15 @@ const Dashboard = () => {
   const handleComplete = async (id) => {
     try {
       await axios.put(`http://localhost:8080/api/todo/status/${id}`);
+      fetchTasks();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/api/todo/${id}`);
       fetchTasks();
     } catch (error) {
       console.log(error);
@@ -152,6 +170,7 @@ const Dashboard = () => {
               task={task}
               onEdit={handleEdit}
               onComplete={handleComplete}
+              onDelete={handleDelete}
             />
           ))}
       </div>
@@ -171,6 +190,7 @@ const Dashboard = () => {
                 task={task}
                 onEdit={handleEdit}
                 onComplete={handleComplete}
+                onDelete={handleDelete}
               />
             ))
         )}
