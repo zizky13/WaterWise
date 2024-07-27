@@ -12,8 +12,10 @@ import StackedLineChartIcon from '@mui/icons-material/StackedLineChart';
 
 
 import GImage from '../../assets/images/google.png' 
+
 // import menus
 import Dashboard from './dashboard';
+import Insights from './insights';
 
 function LeftTabsExample() {
   return (
@@ -62,7 +64,7 @@ function LeftTabsExample() {
               <div className="text-lg font-bold text-gray-600">Second tab content</div>
             </Tab.Pane>
             <Tab.Pane eventKey="third">
-              <div className="text-lg font-bold text-gray-600">3rd tab content</div>
+              <div className="text-lg font-bold text-gray-600"> <Insights/> </div>
             </Tab.Pane>
             <Tab.Pane eventKey="fourth">
               <div className="text-lg font-bold text-gray-600">4th tab content</div>

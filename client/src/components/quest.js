@@ -44,7 +44,7 @@ const Quest = () => {
   return (
     <div className="flex justify-end items-center">
       <div className="flex-row p-5 border-solid border-primary border-1 rounded-md text-center">
-        <p className='dashboardHeader'> Daily Quest</p>
+        <p className='inlineSub'> Daily Quest</p>
         <p className="font-sansar  text-subprimary">Limit shower time to 8 minutes</p>
         <p className="font-sansab text-2xl text-primary">{minutes}:{seconds.toString().padStart(2, '0')}</p>
         

@@ -96,7 +96,7 @@ const Dashboard = () => {
     <div className="p-4">
         <div className="mb-4">
             <div className='flex flex-row'>
-                <h2 className="text-xl mb-2 font-bungeei text-primary">Today's Tasks</h2>
+                <h2 className="text-xl mb-2 font-bungeer text-primary">Today's Tasks</h2>
                 <AddCircleIcon className='text-primary ml-5' onClick={handleShow}/>
             </div>
             {tasks.filter(task => !task.completed).map(task => (
@@ -104,7 +104,7 @@ const Dashboard = () => {
             ))}
         </div>
         <div>
-            <h2 className="font-bungeei text-primary text-xl mb-2">Completed Tasks Today</h2>
+            <h2 className="font-bungeer text-primary text-xl mb-2">Completed Tasks Today</h2>
             {tasks.filter(task => task.completed).length === 0 ? (
             <p className='font-sansar text-subprimary text-center'>You haven't completed any tasks yet. Start by selecting a task from your list and make progress towards achieving your goals!</p>
             ) : (
@@ -118,7 +118,7 @@ const Dashboard = () => {
         </div>
         <Modal show={show} onHide={handleClose} centered>
             <Modal.Header>
-                <Modal.Title className='font-bungeei text-primary'>Add new task</Modal.Title>
+                <Modal.Title className='font-bungeer text-primary'>Add new task</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form>

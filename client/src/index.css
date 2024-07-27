@@ -34,8 +34,13 @@ code {
   @apply font-sansar text-xl
 }
 
-.dashboardHeader {
-  @apply font-bungeei text-primary
+.regularHead {
+  @apply font-bungeer text-primary text-3xl mb-2
+}
+
+
+.inlineSub {
+  @apply font-bungeer text-primary
 }
 
 

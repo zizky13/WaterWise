@@ -22,7 +22,7 @@ const UsageBar = () => {
   return (
     <div className="flex-1 w-full h-40 p-5 border-solid border-primary border-1 rounded-md ">
       <div className='flex flex-row justify-between '>
-        <p className='dashboardHeader'>Your water usage alone per day</p>
+        <p className='inlineSub'>Your water usage alone per day</p>
         <p className={`font-sansab justify-end text-lg ${percentageColor}`}> {`${bar}%`} </p>
       </div>
       <ProgressBar now={bar} />
