@@ -6,8 +6,20 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'br': ['bungee.regular', 'sans-serif'],
-        'bi': ['bungee.inline', 'sans-serif']
+        bungeer: ['Bungee-Regular', 'sans-serif'],
+        bungeei: ['Bungee-Inline', 'sans-serif'],
+        sansar: ['Sansation-Regular', 'sans-serif'],
+        sansal: ['Sansation-Light', 'sans-serif'],
+        sansab: ['Sansation-Bold', 'sans-serif']
+      },
+      colors: {
+        'screenColor': '#f1f1f1', 
+        'primary': '#1b6da4', 
+        'subprimary': '#5091bb', 
+        'headText' : '#202020',
+        'inactiveBtn' : '#9c9c9c',
+        'inactiveText':'606060',
+        'alert':'#bf2d2d',
       }
     },
     
@@ -18,6 +30,7 @@ module.exports = {
       mobile: { max: "500px" },
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 }
 
