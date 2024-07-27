@@ -96,10 +96,24 @@ const Dashboard = () => {
 
   const handleEdit = async (id, newText, newTime) => {
     try {
+      const predictionResult = await axios.post(
+        "http://127.0.0.1:5000/predict",
+        {
+          duration: newTime,
+          task_type: newText,
+        }
+      );
+
+      const { water_usage } = predictionResult.data;
+
+      console.log(water_usage);
+
       await axios.put(`http://localhost:8080/api/todo/${id}`, {
         task: newText,
         duration: newTime,
+        waterUsage: water_usage, 
       });
+
       fetchTasks();
     } catch (error) {
       console.log(error);
