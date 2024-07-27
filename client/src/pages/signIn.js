@@ -1,20 +1,36 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import EmailIcon from '@mui/icons-material/Email';
+import LockIcon from '@mui/icons-material/Lock';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
 import facebook from '../assets/images/facebook.png';
 import google from '../assets/images/google.png';
-import pictsignup from '../assets/images/SignUp-Auth.png';
+import pictlogin from '../assets/images/LogIn-Auth.png';
 import '../index.css';
 
-export default function SignUp() {
+
+export default function SignIn() {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordShown, setPasswordShown] = useState(false);
   
+    const navigate = useNavigate();
+
     const handleSubmit = (event) => {
       event.preventDefault();
-  
+        navigate('/sidetabs')
       // Lakukan validasi dan proses pendaftaran di sini
     };
+
+
+    const handleGoBack = () => {
+        navigate('/');
+    }
+
     const handleClick = () => {
         setPasswordShown(!passwordShown);
     };    
@@ -27,30 +43,28 @@ export default function SignUp() {
                         <span className='font-bi'>WaterWise</span>
                     </div>
                     <div className='flex-1 justify-center items-center p-8'>
-                        <img src={pictsignup} className='h-full w-full'/>
+                        <img src={pictlogin} className='h-full w-full'/>
                     </div>
                 </div>
                 <div className='flex-1'>
                     <div className='flex-col mx-10'>
-                        <button className='border border-gray-400 p-1 rounded-md'>
-                            <a href='/'>Back</a>
-                        </button>
+                        <ArrowBackIcon onClick={handleGoBack} className='arrowBack'/>
                         
                         <div className="mt-4">
-                            <span className='text-3xl font-bold'>Sign up with</span>
+                            <span className='authHead'>Log in with</span>
                         </div>
 
                         <div className="flex flex-row mt-7 justify-between gap-8">
                             <button
                                 type="submit"
-                                className="flex text-black border border-gray-400 font-medium px-6 py-3 rounded-lg justify-center items-center gap-3 w-full"
+                                className="btnGF"
                                 >
                                 <img src={google} className='h-4'/>
                                 Google
                             </button>
                             <button
                                 type="submit"
-                                className="flex text-black border border-gray-400 font-medium px-6 py-3 rounded-lg justify-center items-center gap-3 w-full"
+                                className="btnGF"
                                 >
                                     <img src={facebook} className='h-4'/>
                                 Facebook 
@@ -64,25 +78,10 @@ export default function SignUp() {
                         </div>
 
                         <form onSubmit={handleSubmit}>
-                            <div className='flex flex-col'>
-                                <label htmlFor="username" className="block text-sm font-bold">Username</label>
-                                <div className='mt-1 flex items-center justify-center border border-gray-300 rounded-md'>
-                                    <img src={google} className='pl-4 pr-2 h-4'/>
-                                    <input
-                                        type="text"
-                                        id="username"
-                                        value={username}
-                                        placeholder='Enter your username'
-                                        onChange={(event) => setUsername(event.target.value)}
-                                        className=" px-1 py-1 items-center justify-center outline outline-none w-full"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col mt-4">
-                                <label htmlFor="email" className="block text-sm font-bold">Email</label>
-                                <div className='mt-1 flex items-center justify-center border border-gray-300 rounded-md '>
-                                    <img src={google} className='pl-4 pr-2 h-4'/>
+                            <div className="flex flex-col">
+                                <label htmlFor="email" className="inputLabel">Email</label>
+                                <div className='textInput'>
+                                    <EmailIcon className='inputIcons'/> 
                                     <input
                                         type="email"
                                         id="email"
@@ -95,9 +94,9 @@ export default function SignUp() {
                             </div>
 
                             <div className="flex flex-col mt-4">
-                                <label htmlFor="password" className="block text-sm font-sans font-bold">Password</label>
-                                <div className='mt-1 flex items-center justify-center border border-gray-300 rounded-md '>
-                                    <img src={google} className='pl-4 pr-2 h-4'/>
+                                <label htmlFor="password" className="inputLabel">Password</label>
+                                <div className='textInput'>
+                                    <LockIcon className='inputIcons'/> 
                                     <input
                                         type={passwordShown ? 'text' : 'password'}
                                         id="password"
@@ -106,33 +105,32 @@ export default function SignUp() {
                                         onChange={(event) => setPassword(event.target.value)}
                                         className=" px-1 py-1 items-center justify-center outline outline-none w-full"
                                     />
-                                    <button
-                                        onClick={handleClick}
-                                    >
-                                        {passwordShown ? <img src={google} className='ml-2 mr-5 h-4'/> : <img src={facebook} className='ml-2 mr-5 h-4'/>}
+                                    <button type="button" onClick={handleClick}>
+                                        {passwordShown ? <VisibilityOffIcon className='inputIcons'/> : <VisibilityIcon className='inputIcons'/>}
                                     </button>
                                 </div>
                             </div>
-                
-                            <span className='text-xs px-2 text-gray-400'>
-                                *Minimum length in 6 characters.
-                            </span>
+
+                            <div className='text-xs text-right underline pr-2 pt-1  '>
+                                <a  className='font-sansar text-subprimary' href=''>
+                                    Forgot password?
+                                </a>
+                            </div>
                 
                             <div className="flex mt-6 justify-center">
                                 <button
                                 type="submit"
-                                onClick={handleSubmit}
-                                className="bg-blue-500 text-white font-medium px-20 py-3 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
+                                className="bg-primary text-screenColor font-medium px-20 py-3 rounded-md hover:bg-subprimary font-sansab w-full"
                                 >
-                                    Sign Up
+                                Log in
                                 </button>
                             </div>
                             <div className='flex mt-3 justify-center'>
-                                <span className='text-sm px-1'>
+                                <span className='text-sm px-1 font-sansar'>
                                     Already have an account?
                                 </span>
-                                <a href="/SignIn" className="text-sm font-medium hover:underline text-blue-500">
-                                    Log In 
+                                <a href="/SignUp" className="font-sansab text-sm font-medium hover:underline text-primary">
+                                    Sign Up 
                                 </a>
                             </div>
                         </form>
