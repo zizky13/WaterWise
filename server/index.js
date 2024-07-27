@@ -13,6 +13,8 @@ app.get("/", (req, res) => {
 
 app.use(cors());
 
+app.use("/api/todo", TodoRoutes);
+
 mongoose
   .connect(dbUri)
   .then(() => {
