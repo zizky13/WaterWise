@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 body {
+  overflow-y: auto; /* add this */
+  overflow-x: hidden; /* keep this to hide the horizontal scrollbar */
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -14,4 +16,102 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+
+/* NavBar */
+.navLabel {
+  @apply text-gray-500 hover:text-black no-underline font-sansab
+}
+
+/* Side tabs */
+.tabMenus {
+  @apply py-2
+}
+
+.tabLabels {
+  @apply font-sansar text-xl
+}
+
+.regularHead {
+  @apply font-bungeer text-primary text-3xl mb-2
+}
+
+
+.inlineSub {
+  @apply font-bungeer text-primary
+}
+
+/* Insights styling */
+.insightBoxes {
+  @apply p-3 flex border-solid border-2 border-blue-500 rounded;
+}
+.imgBlogs {
+  @apply w-2/5 
+}
+
+.titleBlogs {
+  @apply text-xl font-sansab text-primary ml-4 mb-2;
+}
+
+.contentBlogs {
+  @apply font-sansal text-base ml-4 text-subprimary mb-4;
+}
+
+
+/* Auth */
+
+.arrowBack  {
+  @apply hover:text-primary cursor-pointer
+}
+
+.authHead {
+  @apply text-3xl font-sansab
+  
+}
+
+.btnGF {
+  @apply flex font-sansar border border-subprimary font-medium  p-3 rounded-lg justify-center items-center gap-3 w-full
+
+}
+
+.textInput {
+  @apply flex font-sansar border border-inactiveBtn   p-2 rounded-lg justify-center items-center gap-3 w-full
+}
+
+.inputLabel {
+  @apply font-sansar block font-medium font-bold mb-1
+
+}
+.inputIcons {
+  @apply text-inactiveBtn mx-3
+}
+
+
+/* Custom font  */
+
+@font-face {
+  font-family: 'Bungee-Regular';
+  src: url('./assets/fonts/Bungee-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Bungee-Inline';
+  src: url('./assets//fonts/Bungee-Inline.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sansation-Regular';
+  src: url('./assets/fonts/Sansation-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sansation-Light';
+  src: url('./assets/fonts/Sansation-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sansation-Bold';
+  src: url('./assets/fonts/Sansation-Bold.ttf') format('truetype');
 }
